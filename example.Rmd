@@ -1,0 +1,136 @@
+---
+bibliography: example.bib
+csl: apa.csl
+editor_options:
+  chunk_output_type: console
+output:
+  word_document:
+    fig_caption: yes
+    highlight: tango
+    reference_docx: apa_style.docx
+---
+
+```{r, include=FALSE}
+
+library(ggplot2)
+library(knitr)
+library(broom)
+knitr::opts_chunk$set(echo=FALSE, echo = FALSE, include = FALSE,
+                      tidy=TRUE, highlight=TRUE, warning=FALSE, dpi = 300)
+
+pv <- function(val) { 
+  if(val<0.001){
+    pval <- "< .001"
+  } else {
+    pval <- paste( "=", sub("^(-?)0.", "\\1.", sprintf("%.3f", val)))
+  }
+  return(pval)
+}
+
+```
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+# How to make an APA style word document in R Markdown
+
+<br>
+
+# Author One^1^ & Author Two^2^
+
+# University One^1^
+
+# University Two^2^
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+# Author Note
+#### This research was funded by a grant from Example Research Council.
+
+<br>
+
+#### Correspondence should be sent to Author One, University One, 123 Imaginary Road, United Kingdom. E-mail: author.one@unione.ac.uk
+
+
+
+
+
+
+
+###### Abstract
+
+#### *R* is a free (libre) programming language and software environment for statistical computing and graphics that is supported by the R Foundation for Statistical Computing [@RCoreTeam2019]. The R language is widely used among statisticians and data miners for developing statistical software and data analysis. Polls, surveys of data miners, and studies of scholarly literature databases show that R's popularity has increased substantially in recent years. R is a GNU package. The source code for the R software environment is written primarily in C, Fortran, and R. R is freely available under the GNU General Public License, and pre-compiled binary versions are provided for various operating systems. While R has a command line interface, there are several graphical front-ends available.
+
+
+
+###### How to make an APA style word document in R Markdown
+
+R is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing [-@RCoreTeam2019]. The R language is widely used among statisticians and data miners for developing statistical software and data analysis. Polls, data mining surveys, and studies of scholarly literature databases show substantial increases in popularity; as of June 2019, R ranks 22nd in the TIOBE index, a measure of popularity of programming languages.
+
+A GNU package, source code for the R software environment is written primarily in C, Fortran and R itself, and is freely available under the GNU General Public License. Pre-compiled binary versions are provided for various operating systems. Although R has a command line interface, there are several graphical user interfaces, such as RStudio, an integrated development environment. 
+
+<br>
+
+## Method
+
+### Participants
+
+### Stimuli
+
+### Analysis
+
+<br>
+
+## Results
+
+```{r, include=TRUE}
+
+# Example Plot
+df <- read.csv("example.csv")
+p <- ggplot(df, aes(x=speed, y=dist))
+p <- p + geom_point(size=2)
+p <- p + geom_smooth(method="lm", colour="black")
+p <- p + theme_bw()
+p <- p + xlab("Speed") + ylab("Distance")
+p <- p + theme(axis.title = element_text(face="bold", size = 12, color="black"),
+               axis.text = element_text(size = 10, color="black"),
+               panel.background = element_rect(fill = "white", colour = "black"),
+               strip.text = element_text(size = 14, color="black"),
+               strip.background = element_rect(fill = "white", colour = "black"))
+p
+
+```
+
+```{r}
+
+mod <- lm(dist ~ speed, df)
+res <- tidy(mod)
+
+```
+
+
+#### *Figure 1.* A scatter plot of the *cars* data
+
+<br>
+
+Surprisingly, a linear regression model showed that greater speed leads to greater distance travelled ($\beta$ = `r round(res$estimate[2], 2)`, *SE* = `r round(res$std.error[2], 2)`, *t* = `r round(res$statistic[2], 2)`, *p* `r pv(res$p.value[2])`).
+
+
+###### References
+
