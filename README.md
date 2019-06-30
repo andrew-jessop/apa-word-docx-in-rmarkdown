@@ -1,4 +1,4 @@
-# How to create a reproducible word document (.docx) in R markdown with APA formatting.
+# How to create a reproducible word document (.docx) in R markdown with APA formatting
 
 An example of how to prepare an APA style word document (.docx) using R markdown
 
