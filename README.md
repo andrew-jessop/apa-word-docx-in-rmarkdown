@@ -2,7 +2,7 @@
 
 An example of how to prepare an APA style word document (.docx) using R markdown.
 
-```
+``` YAML
 
 bibliography: example.bib
 csl: apa.csl
