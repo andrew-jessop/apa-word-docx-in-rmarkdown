@@ -1,6 +1,6 @@
 # How to create a reproducible word document (.docx) in R markdown with APA formatting
 
-An example of how to prepare an APA style word document (.docx) using R markdown
+An example of how to prepare an APA style word document (.docx) using <a href="https://rmarkdown.rstudio.com/">R Markdown</a>, an open source (GPL-3) project for constructing documents in <a href="https://rstudio.com/">RStudio</a>.
 
 
 ``` YAML
